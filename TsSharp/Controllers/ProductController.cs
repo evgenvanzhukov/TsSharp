@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TsSharp.Data;
 using TsSharp.Models;
 
 namespace TsSharp.Controllers
@@ -14,22 +15,23 @@ namespace TsSharp.Controllers
         public ProductController(ApplicationContext context)
         {
             db = context;
-            if (!db.Products.Any())
+            /*if (!db.Products.Any())
             {
-                db.Products.Add(new Product { Name = "iPhone X", Company = "Apple", Price = 79900 });
-                db.Products.Add(new Product { Name = "Galaxy S8", Company = "Samsung", Price = 49900 });
-                db.Products.Add(new Product { Name = "Pixel 2", Company = "Google", Price = 52900 });
+                db.Products.Add(new Product { Name = "iPhone X", Price = 79900 });
+                db.Products.Add(new Product { Name = "Galaxy S8", Price = 49900 });
+                db.Products.Add(new Product { Name = "Pixel 2", Price = 52900 });
                 db.SaveChanges();
-            }
+            }*/
         }
-        [HttpGet]
-        public IEnumerable<Product> Get()
+
+        [HttpGet("cat{id}")]
+        public IEnumerable<Product> GetProducts(int id)
         {
-            return db.Products.ToList();
+            return db.Products.Where(p=>p.CatId==id).ToList();
         }
 
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public Product GetProduct(int id)
         {
             Product product = db.Products.FirstOrDefault(x => x.Id == id);
             return product;

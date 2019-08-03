@@ -5,11 +5,21 @@ using System.Threading.Tasks;
 
 namespace TsSharp.Models
 {
-    public class Product
+    public class Product : BaseModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }    // название 
-        public string Company { get; set; } // производитель
-        public decimal Price { get; set; }  // цена
+        public decimal Price { get; set; }
+
+        public bool IsSpecial  { get; set; }
+
+        public string  FotoMin { get; set; }
+
+        public List<Prop> Props { get; set; }
+
+        public int CatId { get; set; }
+
+        public Product()
+        {
+            Props = new List<Prop>();
+        }
     }
 }

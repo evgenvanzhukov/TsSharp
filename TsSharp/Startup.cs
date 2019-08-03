@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TsSharp.Models;
+using TsSharp.Data;
 
 namespace TsSharp
 {
@@ -17,8 +19,10 @@ namespace TsSharp
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=productsdb;Trusted_Connection=True;";
-            services.AddDbContext<ApplicationContext>(options=>options.UseSqlServer(connectionString));
+            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=baki2;Trusted_Connection=True;";
+            services.AddDbContext<ApplicationContext>(options=>
+                options.UseSqlServer(connectionString));
+            
             services.AddMvc();
         }
 

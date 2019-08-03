@@ -1,0 +1,9 @@
+﻿<div>
+    <a routerLink="/cat/create" class="nav-link">Добавить Категорию</a>
+</div>
+
+<div *ngIf="loaded">
+    <h2>Категория: {{cat.name}}</h2>
+</div>
+
+<product-list [catId]="id"></product-list>

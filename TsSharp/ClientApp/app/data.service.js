@@ -12,22 +12,29 @@ import { HttpClient } from '@angular/common/http';
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
-        this.url = "/api/products";
+        this.productUrl = "/api/products";
+        this.catUrl = "/api/cats";
     }
-    DataService.prototype.getProducts = function () {
-        return this.http.get(this.url);
+    DataService.prototype.getCatList = function () {
+        return this.http.get(this.catUrl);
+    };
+    DataService.prototype.getProducts = function (id) {
+        return this.http.get(this.productUrl + '/cat' + id);
+    };
+    DataService.prototype.getCat = function (id) {
+        return this.http.get(this.catUrl + '/' + id);
     };
     DataService.prototype.getProduct = function (id) {
-        return this.http.get(this.url + '/' + id);
+        return this.http.get(this.productUrl + '/' + id);
     };
     DataService.prototype.createProduct = function (product) {
-        return this.http.post(this.url, product);
+        return this.http.post(this.productUrl, product);
     };
     DataService.prototype.updateProduct = function (product) {
-        return this.http.put(this.url + '/' + product.id, product);
+        return this.http.put(this.productUrl + '/' + product.id, product);
     };
     DataService.prototype.deleteProduct = function (id) {
-        return this.http.delete(this.url + '/' + id);
+        return this.http.delete(this.productUrl + '/' + id);
     };
     DataService = __decorate([
         Injectable(),

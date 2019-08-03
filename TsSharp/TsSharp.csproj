@@ -6,12 +6,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190612112127_initial.cs" />
+    <Compile Remove="Migrations\20190612112127_initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="package-lock.json" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\app.component.ts" />
     <None Remove="ClientApp\app\app.module.ts" />
+    <None Remove="ClientApp\app\cat-list.component.ts" />
+    <None Remove="ClientApp\app\cat.component.ts" />
+    <None Remove="ClientApp\app\cat.ts" />
     <None Remove="ClientApp\app\data.service.ts" />
     <None Remove="ClientApp\app\not-found.component.ts" />
     <None Remove="ClientApp\app\product-create.component.ts" />
@@ -33,6 +41,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\app.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\cat-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\cat.ts" />
+    <TypeScriptCompile Include="ClientApp\app\cat.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\data.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\not-found.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\product-create.component.ts" />

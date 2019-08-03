@@ -1,0 +1,24 @@
+﻿<div>
+    <a routerLink="/cat/create" class="nav-link">Добавить Категорию</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Desc</td>
+            <td>FullDesc</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of cats">
+            <td><a [routerLink]="['api/cats', c.id]" class="nav-link">{{c?.name}}</a></td>
+            <td>{{c?.desc}}</td>
+            <td>{{c?.fulldesc}}</td>
+            <td>
+                <a [routerLink]="['edit',c.id]" class="btn btn-sm btn-primary">Edit</a>
+                <button (click)="delete(c.id)" class="btn btn-sm btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

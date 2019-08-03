@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
+import { CatComponent } from './cat.component';
+import { CatListComponent } from './cat-list.component';
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component'
 import { ProductFormComponent } from './product-form.component';
@@ -17,16 +19,18 @@ import { DataService } from './data.service';
 
 //определение маршрутов
 const appRoutes: Routes = [
-    { path: '', component: ProductListComponent },
-    { path: 'product/:id', component: ProductDetailComponent },
-    { path: 'create', component: ProductCreateComponent },
-    { path: 'edit/:id', component: ProductEditComponent },
+    { path: '', component: CatListComponent },
+    { path: 'api/cats/:id', component: CatComponent },
+    { path: 'api/products/cat:id', component: ProductListComponent },
+    { path: 'api/product/:id', component: ProductDetailComponent },
+    { path: 'api/product/create', component: ProductCreateComponent },
+    { path: 'api/edit/:id', component: ProductEditComponent },
     { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes)],
-    declarations: [AppComponent, ProductListComponent, ProductDetailComponent,
+    declarations: [AppComponent, CatListComponent, CatComponent, ProductListComponent, ProductDetailComponent,
         ProductCreateComponent, ProductEditComponent, ProductFormComponent, NotFoundComponent],
     providers: [DataService],
     bootstrap: [AppComponent]

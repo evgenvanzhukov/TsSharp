@@ -14,6 +14,9 @@
       "webpack-env"
     ]
   },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=productsdb;Trusted_Connection=True;"
+  },
   "exclude": [
     "node_modules",
     "wwwroot",

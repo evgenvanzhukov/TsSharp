@@ -7,10 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from '@angular/core';
+import { Input, Component } from '@angular/core';
 import { DataService } from './data.service';
+import { ActivatedRoute } from '@angular/router';
 var ProductListComponent = /** @class */ (function () {
-    function ProductListComponent(dataService) {
+    function ProductListComponent(dataService, activeRoute) {
         this.dataService = dataService;
     }
     ProductListComponent.prototype.ngOnInit = function () {
@@ -18,17 +19,22 @@ var ProductListComponent = /** @class */ (function () {
     };
     ProductListComponent.prototype.load = function () {
         var _this = this;
-        this.dataService.getProducts().subscribe(function (data) { return _this.products = data; });
+        this.dataService.getProducts(this.catId).subscribe(function (data) { return _this.products = data; });
     };
     ProductListComponent.prototype.delete = function (id) {
         var _this = this;
         this.dataService.deleteProduct(id).subscribe(function (data) { return _this.load(); });
     };
+    __decorate([
+        Input(),
+        __metadata("design:type", Number)
+    ], ProductListComponent.prototype, "catId", void 0);
     ProductListComponent = __decorate([
         Component({
+            selector: 'product-list',
             templateUrl: './product-list.component.html'
         }),
-        __metadata("design:paramtypes", [DataService])
+        __metadata("design:paramtypes", [DataService, ActivatedRoute])
     ], ProductListComponent);
     return ProductListComponent;
 }());
